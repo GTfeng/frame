@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="tmp.stuMapper">
-  <resultMap id="BaseResultMap" type="tmp.stu">
+<mapper namespace="com.frame.frame.web.mapper.StuMapper">
+  <resultMap id="BaseResultMap" type="com.frame.frame.web.entity.Stu">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="tname" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -36,7 +36,7 @@
     delete from stu
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="tmp.stu">
+  <insert id="insert" parameterType="com.frame.frame.web.entity.Stu">
     insert into stu (id, tname, sex, 
       tel, addr, fruit, hobbit, 
       grade, email, tname2, 
@@ -50,7 +50,7 @@
       #{fruit2,jdbcType=VARCHAR}, #{hobbit2,jdbcType=VARCHAR}, #{grade2,jdbcType=VARCHAR}, 
       #{email2,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="tmp.stu">
+  <insert id="insertSelective" parameterType="com.frame.frame.web.entity.Stu">
     insert into stu
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -159,7 +159,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="tmp.stu">
+  <update id="updateByPrimaryKeySelective" parameterType="com.frame.frame.web.entity.Stu">
     update stu
     <set>
       <if test="tname != null">
@@ -213,7 +213,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="tmp.stu">
+  <update id="updateByPrimaryKey" parameterType="com.frame.frame.web.entity.Stu">
     update stu
     set tname = #{tname,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
