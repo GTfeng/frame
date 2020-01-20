@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tmp.stuMapper">
+  <resultMap id="BaseResultMap" type="tmp.stu">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="tname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sex" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tel" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="addr" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fruit" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="hobbit" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="grade" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tname2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sex2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tel2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="addr2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fruit2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="hobbit2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="grade2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email2" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tname, sex, tel, addr, fruit, hobbit, grade, email, tname2, sex2, tel2, addr2, 
+    fruit2, hobbit2, grade2, email2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="tmp.stu">
+    insert into stu (id, tname, sex, 
+      tel, addr, fruit, hobbit, 
+      grade, email, tname2, 
+      sex2, tel2, addr2, 
+      fruit2, hobbit2, grade2, 
+      email2)
+    values (#{id,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{fruit,jdbcType=VARCHAR}, #{hobbit,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{tname2,jdbcType=VARCHAR}, 
+      #{sex2,jdbcType=VARCHAR}, #{tel2,jdbcType=VARCHAR}, #{addr2,jdbcType=VARCHAR}, 
+      #{fruit2,jdbcType=VARCHAR}, #{hobbit2,jdbcType=VARCHAR}, #{grade2,jdbcType=VARCHAR}, 
+      #{email2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="tmp.stu">
+    insert into stu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tname != null">
+        tname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="fruit != null">
+        fruit,
+      </if>
+      <if test="hobbit != null">
+        hobbit,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="tname2 != null">
+        tname2,
+      </if>
+      <if test="sex2 != null">
+        sex2,
+      </if>
+      <if test="tel2 != null">
+        tel2,
+      </if>
+      <if test="addr2 != null">
+        addr2,
+      </if>
+      <if test="fruit2 != null">
+        fruit2,
+      </if>
+      <if test="hobbit2 != null">
+        hobbit2,
+      </if>
+      <if test="grade2 != null">
+        grade2,
+      </if>
+      <if test="email2 != null">
+        email2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null">
+        #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="fruit != null">
+        #{fruit,jdbcType=VARCHAR},
+      </if>
+      <if test="hobbit != null">
+        #{hobbit,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tname2 != null">
+        #{tname2,jdbcType=VARCHAR},
+      </if>
+      <if test="sex2 != null">
+        #{sex2,jdbcType=VARCHAR},
+      </if>
+      <if test="tel2 != null">
+        #{tel2,jdbcType=VARCHAR},
+      </if>
+      <if test="addr2 != null">
+        #{addr2,jdbcType=VARCHAR},
+      </if>
+      <if test="fruit2 != null">
+        #{fruit2,jdbcType=VARCHAR},
+      </if>
+      <if test="hobbit2 != null">
+        #{hobbit2,jdbcType=VARCHAR},
+      </if>
+      <if test="grade2 != null">
+        #{grade2,jdbcType=VARCHAR},
+      </if>
+      <if test="email2 != null">
+        #{email2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="tmp.stu">
+    update stu
+    <set>
+      <if test="tname != null">
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="fruit != null">
+        fruit = #{fruit,jdbcType=VARCHAR},
+      </if>
+      <if test="hobbit != null">
+        hobbit = #{hobbit,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tname2 != null">
+        tname2 = #{tname2,jdbcType=VARCHAR},
+      </if>
+      <if test="sex2 != null">
+        sex2 = #{sex2,jdbcType=VARCHAR},
+      </if>
+      <if test="tel2 != null">
+        tel2 = #{tel2,jdbcType=VARCHAR},
+      </if>
+      <if test="addr2 != null">
+        addr2 = #{addr2,jdbcType=VARCHAR},
+      </if>
+      <if test="fruit2 != null">
+        fruit2 = #{fruit2,jdbcType=VARCHAR},
+      </if>
+      <if test="hobbit2 != null">
+        hobbit2 = #{hobbit2,jdbcType=VARCHAR},
+      </if>
+      <if test="grade2 != null">
+        grade2 = #{grade2,jdbcType=VARCHAR},
+      </if>
+      <if test="email2 != null">
+        email2 = #{email2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tmp.stu">
+    update stu
+    set tname = #{tname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      fruit = #{fruit,jdbcType=VARCHAR},
+      hobbit = #{hobbit,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tname2 = #{tname2,jdbcType=VARCHAR},
+      sex2 = #{sex2,jdbcType=VARCHAR},
+      tel2 = #{tel2,jdbcType=VARCHAR},
+      addr2 = #{addr2,jdbcType=VARCHAR},
+      fruit2 = #{fruit2,jdbcType=VARCHAR},
+      hobbit2 = #{hobbit2,jdbcType=VARCHAR},
+      grade2 = #{grade2,jdbcType=VARCHAR},
+      email2 = #{email2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
