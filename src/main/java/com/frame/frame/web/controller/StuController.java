@@ -44,4 +44,9 @@ public class StuController extends XApiController {
         XR<IPage<Stu>> r = XR.ok(stuService.page(page, params));
         return r;
     }
+
+    @RequestMapping("/")
+    public String testHTTP(){
+        return "HTTP";
+    }
 }
