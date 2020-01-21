@@ -1,0 +1,57 @@
+#
+#
+#
+#
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:/xml/*Mapper.xml
+  #mapperScanPackage: com.as.security.mapper,com.as.cyems.mapper
+  #实体扫描，多个package用逗号或者分号分隔
+  #typeAliasesPackage: com.as.cyems.domain,com.as.security.domain
+  #typeEnumsPackage: com.as.cyems.domain.enums
+  global-config:
+    # 数据库相关配置
+    db-config:
+      # NOTE 注意这里
+      # NOTE oracle生成的domain上要注意 @TableId(value = "ID", type = IdType.INPUT)
+      # NOTE mysql是数据库本身保证ID自增长的，则无需指定这个type. 可以是 @TableId(value = "ID", type = IdType.AUTO) 也可以是 @TableId(value = "ID")
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #
+      # ------------------------------------------------------------ logic del conf
+      #
+      # Below is the root reason i set -1 as logic-not-delete-value
+      #
+      # NOTE start
+      # Interpreting Objects as Booleans
+      #
+      # Any object can be used where a boolean is required. OGNL interprets objects as booleans like this:
+      #
+      # If the object is a Boolean, its value is extracted and returned;
+      # If the object is a Number, its double-precision floating-point value is compared with zero; non-zero is treated as true, zero as false;
+      # If the object is a Character, its boolean value is true if and only if its char value is non-zero;
+      # Otherwise, its boolean value is true if and only if it is non-null.
+      #
+      # https://commons.apache.org/proper/commons-ognl/language-guide.html FYI
+      # NOTE end
+      #
+      # 1 by default
+      logic-delete-value: 1
+      # 0 by default. 0 will be treated as null in mybatis, -1 can avoid this issue, that' why i use -1
+      logic-not-delete-value: -1
+      # TBD NOTE 此处似乎不和真实数据库一致也没问题
+      db-type: mysql
+    refresh: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    # NOTE springboot 项目mybatis plus 设置 jdbcTypeForNull （oracle数据库需配置JdbcType.NULL, 默认是Other）
+    # NOTE mybatis-plus 与oracle集成则该值设置为 'null'
+    # NOTE mybatis-plus 与mysql集成则该值设置为 'Other', 默认即为Other
+    jdbc-type-for-null: 'null' #注意：单引号
