@@ -1,8 +1,12 @@
 package com.frame.frame.web.entity;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
 
 @Data
+@TableName
 public class Stu {
     private Integer id;
 
@@ -38,7 +42,13 @@ public class Stu {
 
     private String email2;
 
-//    public Stu(Integer id, String tname, String sex, String tel, String addr, String fruit, String hobbit, String grade, String email, String tname2, String sex2, String tel2, String addr2, String fruit2, String hobbit2, String grade2, String email2) {
+    @Version
+    private Integer version;
+
+    @TableLogic
+    private String disabled;
+
+//    public Stu(Integer id, String tname, String sex, String tel, String addr, String fruit, String hobbit, String grade, String email, String tname2, String sex2, String tel2, String addr2, String fruit2, String hobbit2, String grade2, String email2, Integer version, String disabled) {
 //        this.id = id;
 //        this.tname = tname;
 //        this.sex = sex;
@@ -56,6 +66,8 @@ public class Stu {
 //        this.hobbit2 = hobbit2;
 //        this.grade2 = grade2;
 //        this.email2 = email2;
+//        this.version = version;
+//        this.disabled = disabled;
 //    }
 //
 //    public Stu() {
@@ -196,5 +208,21 @@ public class Stu {
 //
 //    public void setEmail2(String email2) {
 //        this.email2 = email2 == null ? null : email2.trim();
+//    }
+//
+//    public Integer getVersion() {
+//        return version;
+//    }
+//
+//    public void setVersion(Integer version) {
+//        this.version = version;
+//    }
+//
+//    public String getDisabled() {
+//        return disabled;
+//    }
+//
+//    public void setDisabled(String disabled) {
+//        this.disabled = disabled == null ? null : disabled.trim();
 //    }
 }

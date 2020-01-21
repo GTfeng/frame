@@ -20,11 +20,13 @@
       <arg column="hobbit2" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="grade2" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="email2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="disabled" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     id, tname, sex, tel, addr, fruit, hobbit, grade, email, tname2, sex2, tel2, addr2, 
-    fruit2, hobbit2, grade2, email2
+    fruit2, hobbit2, grade2, email2, version, disabled
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -42,13 +44,15 @@
       grade, email, tname2, 
       sex2, tel2, addr2, 
       fruit2, hobbit2, grade2, 
-      email2)
+      email2, version, disabled
+      )
     values (#{id,jdbcType=INTEGER}, #{tname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{tel,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, #{fruit,jdbcType=VARCHAR}, #{hobbit,jdbcType=VARCHAR}, 
       #{grade,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{tname2,jdbcType=VARCHAR}, 
       #{sex2,jdbcType=VARCHAR}, #{tel2,jdbcType=VARCHAR}, #{addr2,jdbcType=VARCHAR}, 
       #{fruit2,jdbcType=VARCHAR}, #{hobbit2,jdbcType=VARCHAR}, #{grade2,jdbcType=VARCHAR}, 
-      #{email2,jdbcType=VARCHAR})
+      #{email2,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{disabled,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.frame.frame.web.entity.Stu">
     insert into stu
@@ -104,6 +108,12 @@
       <if test="email2 != null">
         email2,
       </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -156,6 +166,12 @@
       </if>
       <if test="email2 != null">
         #{email2,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -210,6 +226,12 @@
       <if test="email2 != null">
         email2 = #{email2,jdbcType=VARCHAR},
       </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -230,7 +252,9 @@
       fruit2 = #{fruit2,jdbcType=VARCHAR},
       hobbit2 = #{hobbit2,jdbcType=VARCHAR},
       grade2 = #{grade2,jdbcType=VARCHAR},
-      email2 = #{email2,jdbcType=VARCHAR}
+      email2 = #{email2,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      disabled = #{disabled,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
