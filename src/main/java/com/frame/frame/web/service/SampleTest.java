@@ -1,5 +1,6 @@
 package com.frame.frame.web.service;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.mapper.StuMapper;
 import org.junit.Assert;
@@ -20,7 +21,7 @@ import java.util.List;
 @Service
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SampleTest {
+public class SampleTest extends ServiceImpl<StuMapper,Stu> {
 
     @Autowired
     private StuMapper stuMapper;
@@ -32,4 +33,6 @@ public class SampleTest {
         Assert.assertEquals(50, stuList.size());
         stuList.forEach(System.out::println);
     }
+
+
 }

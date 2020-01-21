@@ -1,9 +1,10 @@
 package com.frame.frame.web.entity;
 
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 @Data
-public class Stu {
+public class Stu extends Model<Stu> {
     private Integer id;
 
     private String tname;
