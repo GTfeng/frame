@@ -36,4 +36,12 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
         return p;
     }
 
+    //    public IPage<Stu> getById(Page page,Stu params){
+    @Transactional(rollbackFor = {Exception.class})
+    public Stu getById(Page page, Stu params) {
+//        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
+        Stu stu = this.getById(params.getId());
+        return stu;
+    }
+
 }

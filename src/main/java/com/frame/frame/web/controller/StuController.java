@@ -7,14 +7,13 @@ import com.frame.frame.base.application.XApiController;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.service.StuService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author shr
@@ -46,7 +45,15 @@ public class StuController extends XApiController {
     }
 
     @RequestMapping("/")
-    public String testHTTP(){
+    public String testHTTP() {
         return "HTTP";
+    }
+
+    @PostMapping(value = "getById.sdo",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Stu getById(Page page, @RequestBody List<Stu> params) {
+        Stu stu = stuService.getById(params.get(0).getId());
+        System.out.println("getById.sdo");
+        return stu;
     }
 }
