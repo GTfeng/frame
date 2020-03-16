@@ -11,6 +11,8 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author shr
  * @Date 2020-01-21 14:29
@@ -38,10 +40,15 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
 
     //    public IPage<Stu> getById(Page page,Stu params){
     @Transactional(rollbackFor = {Exception.class})
-    public Stu getById(Page page, Stu params) {
-//        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
-        Stu stu = this.getById(params.getId());
-        return stu;
+    public IPage<Stu> getByIds(Page page, List<Stu> params) {
+        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
+        LambdaQueryWrapper<Stu> wr = wrapper.lambda();
+        wr = wr.eq(Stu::getId, params.get(0).getId());
+        for (int i = 1; i < params.size(); i++) {
+            wr = wr.or().eq(Stu::getId, params.get(i).getId());
+        }
+        IPage<Stu> p = this.page(page, wr);
+        return p;
     }
 
 }

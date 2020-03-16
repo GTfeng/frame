@@ -53,7 +53,14 @@ public class StuController extends XApiController {
     @ResponseBody
     public Stu getById(Page page, @RequestBody List<Stu> params) {
         Stu stu = stuService.getById(params.get(0).getId());
-        System.out.println("getById.sdo");
+//        System.out.println("getById.sdo");
         return stu;
+    }
+
+    @PostMapping("getByIds.sdo")
+    @ResponseBody
+    public XR<IPage<Stu>> getByIds(Page page, @RequestBody List<Stu> params) {
+        XR<IPage<Stu>> r = XR.ok(stuService.getByIds(page, params));
+        return r;
     }
 }
