@@ -11,6 +11,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,10 +44,25 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
     public IPage<Stu> getByIds(Page page, List<Stu> params) {
         QueryWrapper<Stu> wrapper = new QueryWrapper<>();
         LambdaQueryWrapper<Stu> wr = wrapper.lambda();
-        wr = wr.eq(Stu::getId, params.get(0).getId());
-        for (int i = 1; i < params.size(); i++) {
-            wr = wr.or().eq(Stu::getId, params.get(i).getId());
+
+        /**
+         * note function1  stupid
+         wr = wr.eq(Stu::getId, params.get(0).getId());
+         for (int i = 1; i < params.size(); i++) {
+         wr = wr.or().eq(Stu::getId, params.get(i).getId());
+         }
+         **/
+
+        /**
+         * note function2  .in
+         * note it's nice
+         */
+        List<Integer> ids = new ArrayList<>();
+        for (Stu stu : params) {
+            ids.add(stu.getId());
         }
+        wr = wr.in(Stu::getId, ids);
+
         IPage<Stu> p = this.page(page, wr);
         return p;
     }
