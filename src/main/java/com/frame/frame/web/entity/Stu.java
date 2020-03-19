@@ -1,5 +1,6 @@
 package com.frame.frame.web.entity;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
@@ -38,6 +39,9 @@ public class Stu extends Model<Stu> {
     private String grade2;
 
     private String email2;
+
+    @TableLogic
+    private Integer disabled;
 
 //    public Stu(Integer id, String tname, String sex, String tel, String addr, String fruit, String hobbit, String grade, String email, String tname2, String sex2, String tel2, String addr2, String fruit2, String hobbit2, String grade2, String email2) {
 //        this.id = id;
