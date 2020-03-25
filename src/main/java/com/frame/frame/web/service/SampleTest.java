@@ -26,13 +26,13 @@ public class SampleTest extends ServiceImpl<StuMapper,Stu> {
     @Autowired
     private StuMapper stuMapper;
 
-    @Test
-    public void testSelect() {
-        System.out.println("----Select All method----");
-        List<Stu> stuList = stuMapper.selectList(null);
-        Assert.assertEquals(50, stuList.size());
-        stuList.forEach(System.out::println);
-    }
+//    @Test
+//    public void testSelect() {
+//        System.out.println("----Select All method----");
+//        List<Stu> stuList = stuMapper.selectList(null);
+//        Assert.assertEquals(50, stuList.size());
+//        stuList.forEach(System.out::println);
+//    }
 
 
 }
