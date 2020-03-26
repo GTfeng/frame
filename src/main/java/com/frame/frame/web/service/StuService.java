@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.frame.frame.base.utils.XBeanUtils;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.mapper.StuMapper;
 import org.apache.logging.log4j.util.Strings;
@@ -63,6 +64,20 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
         }
         wr = wr.in(Stu::getId, ids);
 
+        IPage<Stu> p = this.page(page, wr);
+        return p;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public IPage<Stu> updateStus(Page page, List<Stu> params) {
+        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
+        LambdaQueryWrapper<Stu> wr = wrapper.lambda();
+        for (Stu stu : params) {
+            Stu one = new Stu();
+            XBeanUtils.copyProperties(stu, one);
+            this.save(one);
+        }
+        wr = wr.in(Stu::getId, params);
         IPage<Stu> p = this.page(page, wr);
         return p;
     }

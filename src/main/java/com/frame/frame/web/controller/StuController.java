@@ -49,7 +49,7 @@ public class StuController extends XApiController {
         return "HTTP";
     }
 
-    @PostMapping(value = "getById.sdo",produces = "application/json;charset=UTF-8")
+    @PostMapping(value = "getById.sdo", produces = "application/json;charset=UTF-8")
     @ResponseBody
     public Stu getById(Page page, @RequestBody List<Stu> params) {
         Stu stu = stuService.getById(params.get(0).getId());
@@ -61,6 +61,13 @@ public class StuController extends XApiController {
     @ResponseBody
     public XR<IPage<Stu>> getByIds(Page page, @RequestBody List<Stu> params) {
         XR<IPage<Stu>> r = XR.ok(stuService.getByIds(page, params));
+        return r;
+    }
+
+    @PostMapping("updateStus.sdo")
+    @ResponseBody
+    public XR<IPage<Stu>> updateStus(Page page, @RequestBody List<Stu> params) {
+        XR<IPage<Stu>> r = XR.ok(stuService.updateStus(page, params));
         return r;
     }
 }
