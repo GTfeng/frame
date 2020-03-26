@@ -70,15 +70,12 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
 
     @Transactional(rollbackFor = Exception.class)
     public IPage<Stu> updateStus(Page page, List<Stu> params) {
-        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
-        LambdaQueryWrapper<Stu> wr = wrapper.lambda();
         for (Stu stu : params) {
             Stu one = new Stu();
             XBeanUtils.copyProperties(stu, one);
-            this.save(one);
+            this.updateById(one);
         }
-        wr = wr.in(Stu::getId, params);
-        IPage<Stu> p = this.page(page, wr);
+        IPage<Stu> p = this.getByIds(page, params);
         return p;
     }
 
