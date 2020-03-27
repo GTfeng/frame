@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author shr
@@ -20,6 +21,14 @@ public class XSuperLogicEntity<T extends Model> extends Model {
 
     @Version
     private Integer version;
+
+    private String createdBy;
+
+    private Date createdDate;
+
+    private String lastModifiedBy;
+
+    private Date  lastModifiedDate;
 
 
 

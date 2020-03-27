@@ -191,6 +191,11 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.30</version>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>3.1.2</version>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>com.ibeetl</groupId>-->
         <!--<artifactId>beetl</artifactId>-->

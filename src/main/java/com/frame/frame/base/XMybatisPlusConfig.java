@@ -18,10 +18,26 @@ public class XMybatisPlusConfig {
     private static final Logger LOG = LoggerFactory.getLogger(XMybatisPlusConfig.class);
 
     /**
-     * 乐观锁插件
+     * 乐观锁配置.
+     * <p>
+     * 会检测有@Version注解的属性，update时自动加一.
+     * </p>
+     *
+     * @return
      */
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
+    }
+
+    /**
+     * 开启逻辑删除.
+     *
+     * @return
+     */
+
+    @Bean
+    public com.baomidou.mybatisplus.core.injector.ISqlInjector logicSqlInjector() {
+        return new com.baomidou.mybatisplus.extension.injector.LogicSqlInjector();
     }
 }
