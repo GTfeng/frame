@@ -85,13 +85,13 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public IPage<Stu> deleteByIds(Page page, List<Stu> params){
-        UpdateWrapper<Stu> wrapper = new UpdateWrapper<>();
-        LambdaUpdateWrapper wr = wrapper.lambda();
-        for (Stu stu : params){
+    public IPage<Stu> deleteByIds(Page page, List<Stu> params) {
+        QueryWrapper<Stu> wrapper = new QueryWrapper<>();
+        LambdaQueryWrapper wr = wrapper.lambda();
+        for (Stu stu : params) {
             this.stuMapper.deleteById(stu.getId());
         }
-        IPage<Stu> p = super.page(page,wr);
+        IPage<Stu> p = super.page(page, wr);
         return p;
     }
 
