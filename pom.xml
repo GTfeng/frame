@@ -194,7 +194,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-extension</artifactId>
-            <version>3.1.2</version>
+            <version>3.3.0</version>
         </dependency>
         <!--<dependency>-->
         <!--<groupId>com.ibeetl</groupId>-->

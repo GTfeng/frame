@@ -36,8 +36,8 @@ public class XMybatisPlusConfig {
      * @return
      */
 
-    @Bean
-    public com.baomidou.mybatisplus.core.injector.ISqlInjector logicSqlInjector() {
-        return new com.baomidou.mybatisplus.extension.injector.LogicSqlInjector();
-    }
+//    @Bean
+//    public com.baomidou.mybatisplus.core.injector.ISqlInjector logicSqlInjector() {
+//        return new com.baomidou.mybatisplus.extension.injector.LogicSqlInjector();
+//    }
 }

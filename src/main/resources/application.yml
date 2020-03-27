@@ -29,6 +29,7 @@ mybatis-plus:
 spring:
   profiles: test
   datasource:
+    # p6spy为测试阶段用来看sql的插件，生产部署中，如需提升性能，可省去
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     url: jdbc:p6spy:mysql://localhost:3306/test?setUnicode=true&characterEncoding=utf8
     username: root
