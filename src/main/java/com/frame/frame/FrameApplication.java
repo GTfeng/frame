@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.frame")
 @MapperScan("com.frame.frame.web.mapper")
+//@EnableAutoConfiguration(exclude = XMybatisPlusConfig.class)
 public class FrameApplication {
 
 	public static void main(String[] args) {

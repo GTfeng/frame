@@ -29,15 +29,4 @@ public class XMybatisPlusConfig {
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
     }
-
-    /**
-     * 开启逻辑删除.
-     *
-     * @return
-     */
-
-//    @Bean
-//    public com.baomidou.mybatisplus.core.injector.ISqlInjector logicSqlInjector() {
-//        return new com.baomidou.mybatisplus.extension.injector.LogicSqlInjector();
-//    }
 }

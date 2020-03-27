@@ -1,10 +1,15 @@
 package com.frame.frame.web.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.injector.methods.DeleteById;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.generator.config.po.LikeTable;
 import com.frame.frame.base.utils.XBeanUtils;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.mapper.StuMapper;
@@ -76,6 +81,17 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
             this.updateById(one);
         }
         IPage<Stu> p = this.getByIds(page, params);
+        return p;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public IPage<Stu> deleteByIds(Page page, List<Stu> params){
+        UpdateWrapper<Stu> wrapper = new UpdateWrapper<>();
+        LambdaUpdateWrapper wr = wrapper.lambda();
+        for (Stu stu : params){
+            this.stuMapper.deleteById(stu.getId());
+        }
+        IPage<Stu> p = super.page(page,wr);
         return p;
     }
 

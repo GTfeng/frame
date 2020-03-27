@@ -70,4 +70,11 @@ public class StuController extends XApiController {
         XR<IPage<Stu>> r = XR.ok(stuService.updateStus(page, params));
         return r;
     }
+
+    @PostMapping("deleteByIds.sdo")
+    @ResponseBody
+    public XR<IPage<Stu>> deleteByIds(Page page, @RequestBody List<Stu> params) {
+        XR<IPage<Stu>> r = XR.ok(stuService.deleteByIds(page, params));
+        return r;
+    }
 }
