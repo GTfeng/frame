@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.po.LikeTable;
+import com.frame.frame.base.entity.XSuperLogicEntity;
 
 /**
  * @Author shr
@@ -27,7 +29,8 @@ public class XAutoGenerator {
                 .setIdType(IdType.AUTO)
                 .setServiceName("%sService")
                 .setBaseResultMap(true)
-                .setBaseColumnList(true);
+                .setBaseColumnList(true)
+                .setOpen(false);
 
         //note 数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
@@ -38,10 +41,16 @@ public class XAutoGenerator {
                 .setPassword("123456");
 
         //note 策略配置
+        //需要生成的表名(模糊匹配)
+        LikeTable likeTable = new LikeTable("stu");
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig.setCapitalMode(false)
-                .setLogicDeleteFieldName("disalbed");
-//                .setSuperEntityClass()
+                .setLogicDeleteFieldName("disalbed")
+//                .setNaming()
+                .setSuperEntityClass(XSuperLogicEntity.class)
+                .setEntityLombokModel(true)
+                .setTablePrefix("%sTb")
+                .setLikeTable(likeTable);
 
 
         //note 包策略
