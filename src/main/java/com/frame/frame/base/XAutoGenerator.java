@@ -22,6 +22,8 @@ public class XAutoGenerator {
     public static void AutoGenerator() {
         //note 全局配置
         GlobalConfig globalConfig = new GlobalConfig();
+        String nameRule = "Tb%s";
+
         globalConfig.setActiveRecord(true)
                 .setAuthor("shr")
                 .setOutputDir("src/main/java/tmp")
@@ -30,7 +32,13 @@ public class XAutoGenerator {
                 .setServiceName("%sService")
                 .setBaseResultMap(true)
                 .setBaseColumnList(true)
-                .setOpen(false);
+                .setOpen(false)
+                .setEntityName(nameRule)
+                .setMapperName(nameRule)
+                .setXmlName(nameRule)
+                .setServiceName(nameRule)
+                .setServiceImplName(nameRule)
+                .setControllerName(nameRule);
 
         //note 数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
