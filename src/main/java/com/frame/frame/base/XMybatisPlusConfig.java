@@ -27,6 +27,7 @@ public class XMybatisPlusConfig {
      */
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        LOG.info("optimisticLockerInterceptor");
         return new OptimisticLockerInterceptor();
     }
 }
