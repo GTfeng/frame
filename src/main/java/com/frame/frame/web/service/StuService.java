@@ -73,7 +73,7 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
         return p;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public IPage<Stu> updateStus(Page page, List<Stu> params) {
         for (Stu stu : params) {
             Stu oldStu = this.stuMapper.selectById(stu.getId());
