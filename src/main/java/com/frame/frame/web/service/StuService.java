@@ -76,9 +76,10 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
     @Transactional(rollbackFor = Exception.class)
     public IPage<Stu> updateStus(Page page, List<Stu> params) {
         for (Stu stu : params) {
-            Stu one = new Stu();
-            XBeanUtils.copyProperties(stu, one);
-            this.updateById(one);
+            Stu oldStu = this.stuMapper.selectById(stu.getId());
+            Integer oldVersion = oldStu.getVersion();
+            stu.setVersion(oldVersion);
+            this.updateById(stu);
         }
         IPage<Stu> p = this.getByIds(page, params);
         return p;

@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author shr
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 
+@Component
 @Configuration
 public class XMybatisPlusConfig {
     private static final Logger LOG = LoggerFactory.getLogger(XMybatisPlusConfig.class);
