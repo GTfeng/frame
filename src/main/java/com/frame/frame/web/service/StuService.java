@@ -41,7 +41,6 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
             wr.like(Stu::getAddr, params.getAddr());
         }
         IPage<Stu> p = this.page(page, wrapper);
-        System.out.println(p);
         return p;
     }
 
