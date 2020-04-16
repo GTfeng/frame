@@ -1,16 +1,10 @@
 package com.frame.frame.web.service;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.injector.methods.DeleteById;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.generator.config.po.LikeTable;
-import com.frame.frame.base.utils.XBeanUtils;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.mapper.StuMapper;
 import org.apache.logging.log4j.util.Strings;
