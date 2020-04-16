@@ -31,4 +31,5 @@ build/
 .vscode/
 classes/
 src/main/java/tmp
-
+src/main/resources/rebel-remote.xml
+src/main/resources/rebel.xml
