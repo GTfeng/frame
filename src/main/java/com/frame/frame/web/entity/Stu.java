@@ -1,13 +1,9 @@
 package com.frame.frame.web.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.frame.frame.base.entity.XSuperLogicEntity;
 import lombok.Data;
 
 @Data
-//public class Stu extends Model<Stu> {
 public class Stu extends XSuperLogicEntity<Stu> {
     private Integer id;
 
