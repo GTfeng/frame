@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.frame.frame.web.entity.Stu;
 import com.frame.frame.web.mapper.StuMapper;
 import org.apache.logging.log4j.util.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +24,7 @@ import java.util.List;
 @Service
 public class StuService extends ServiceImpl<StuMapper, Stu> {
     private final StuMapper stuMapper;
+    private final static Logger LOG = LoggerFactory.getLogger(ServiceImpl.class);
 
     public StuService(StuMapper stuMapper) {
         this.stuMapper = stuMapper;
@@ -34,6 +37,7 @@ public class StuService extends ServiceImpl<StuMapper, Stu> {
         if (Strings.isNotEmpty(params.getAddr())) {
             wr.like(Stu::getAddr, params.getAddr());
         }
+        LOG.info(wrapper.toString());
         IPage<Stu> p = this.page(page, wrapper);
         return p;
     }
