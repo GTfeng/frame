@@ -19,6 +19,12 @@ public class test4everyone {
     public static void getSystem(){
         Properties properties = System.getProperties();
         String os = properties.getProperty("os.name");
+        String osVersion = properties.getProperty("os.version");
+        String osArch = properties.getProperty("os.arch");
+        String osUser = properties.getProperty("user.name");
         System.out.println(os);
+        System.out.println(osVersion);
+        System.out.println(osArch);
+        System.out.println(osUser);
     }
 }
