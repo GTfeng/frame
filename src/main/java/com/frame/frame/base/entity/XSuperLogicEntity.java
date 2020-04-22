@@ -14,7 +14,7 @@ import java.util.Date;
  * @Version 1.0
  */
 @Data
-public class XSuperLogicEntity<T extends Model> extends Model {
+public class XSuperLogicEntity<T extends Model<T>> extends Model<T> {
 
     @TableLogic
     private Integer disabled;
